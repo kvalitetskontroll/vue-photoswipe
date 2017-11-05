@@ -17,6 +17,9 @@ export default {
             },
             close () {
                 $vm.close()
+            },
+            getCurrentIndex () {
+                return $vm.getCurrentIndex()
             }
         }
 

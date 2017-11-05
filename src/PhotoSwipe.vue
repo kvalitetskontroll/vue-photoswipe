@@ -103,6 +103,10 @@
 
             close () {
                 this.photoswipe.close()
+            },
+
+            getCurrentIndex () {
+                return this.photoswipe.getCurrentIndex()
             }
         }
     }
