@@ -77,12 +77,13 @@
     export default {
         methods: {
             open (index, items, options = {
-                // captionEl: false,
-                fullscreenEl: true,
-                history: false,
-                shareEl: false,
-                tapToClose: true
-            }) {
+                      // captionEl: false,
+                      fullscreenEl: true,
+                      history: false,
+                      shareEl: false,
+                      tapToClose: true
+                  },
+                  afterChangeCallback) {
                 const opts = Object.assign({
                     index: index,
                     getThumbBoundsFn (index) {
@@ -94,20 +95,24 @@
                             y: rect.top + pageYScroll,
                             w: rect.width
                         }
-                    }
+                    },
+                    loop:false
                 }, options)
 
                 this.photoswipe = new PhotoSwipe(this.$el, PhotoSwipeDefaultUI, items, opts)
                 this.photoswipe.init()
+
+                this.photoswipe.listen('afterChange', () => {
+                    if(afterChangeCallback){
+                        afterChangeCallback(this.photoswipe.getCurrentIndex());
+                    }
+                });
             },
 
             close () {
                 this.photoswipe.close()
-            },
-
-            getCurrentIndex () {
-                return this.photoswipe.getCurrentIndex()
             }
         }
     }
 </script>
+
