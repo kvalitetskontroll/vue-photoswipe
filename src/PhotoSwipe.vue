@@ -105,12 +105,24 @@
                 this.photoswipe.listen('afterChange', () => {
                     if(afterChangeCallback){
                         afterChangeCallback(this.photoswipe.getCurrentIndex());
+
+
                     }
                 });
             },
 
             close () {
                 this.photoswipe.close()
+            },
+
+            updateSize(items){
+                for (var i = 0; i < items.length; i++) {
+                    this.photoswipe.items.push(items[i]);
+                }
+
+                this.photoswipe.invalidateCurrItems();
+
+                this.photoswipe.updateSize(true);
             }
         }
     }

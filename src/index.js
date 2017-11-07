@@ -18,8 +18,8 @@ export default {
             close () {
                 $vm.close()
             },
-            getCurrentIndex () {
-                return $vm.getCurrentIndex()
+            updateSize (items) {
+                $vm.updateSize(items)
             }
         }
 
